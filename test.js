@@ -6,7 +6,7 @@ var url = require('url');
  * req 获取url信息
  * res 浏览器返回响应信息
  */
-http.createServer(function(req, res) {
+var app = http.createServer(function(req, res) {
     // 发送 HTTP 头部
     // HTTP 状态值: 200 : OK
     //设置 HTTP 头部，状态码是 200，文件类型是 html，字符集是 utf8
@@ -27,4 +27,6 @@ http.createServer(function(req, res) {
     res.write('supervisor');
     
     res.end();
-}).listen(8001);
+});
+
+app.listen(8001);
