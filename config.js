@@ -2,4 +2,5 @@
 var str = 'this is config';
 
 //暴露模块
-module.exports = str;
+exports.str = str;
+// module.exports = str;
