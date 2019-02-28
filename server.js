@@ -2,8 +2,11 @@
 var http = require('http');
 var url = require('url');
 
-var config = require('./config');
+var config = require('./config'); // 省略.js后缀也是可以的
 var tools = require('./tools');
+var apple = require('apple');
+var bar = require('bar/bar');
+var nav = require('nav');
 
 /**
  * req 获取url信息
@@ -32,6 +35,10 @@ var app = http.createServer(function(req, res) {
     console.log(tools.sayHello());
     console.log(tools.add(1,2));
     
+    console.log(apple);
+    console.log(bar);
+    console.log(nav);
+
     res.end();
 });
 
