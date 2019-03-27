@@ -25,3 +25,26 @@ fs.stat('upload', function(err, stats) {
         console.log(stats.isDirectory());
     }
 }); 
+
+// 找出html目录下面的所有的目录，然后打印出来
+var filesArr = [];
+fs.readdir('node_modules', function(err, files){
+    if(err){
+        console.log(err);
+    } else {//判断是目录还是文件夹
+        console.log(files);//数组
+        
+        (function getFile(i) {
+            if (i == files.length){
+                return false;
+            }
+            fs.stat('node_modules/' + files[i], function(error, stats){
+                if (stats.isDirectory()){//目录
+                    filesArr.push(files[i]);
+                }
+                // 递归调用
+                getFile(i+1);
+            });
+        })(0);
+    }
+});
