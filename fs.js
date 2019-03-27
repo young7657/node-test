@@ -48,3 +48,66 @@ fs.readdir('node_modules', function(err, files){
         })(0);
     }
 });
+
+// 流的方式读取文件
+var readStream = fs.createReadStream('package.json');
+
+var str = '' // 保存数据
+var count = 0;// 次数
+// 监听data事件
+
+readStream.on('data', function (chunk){
+    str += chunk;
+    count++;
+});
+
+// 读取完成
+readStream.on('end', function(chunk){
+    console.log(str);
+    console.log(count);
+});
+
+// 读取失败
+readStream.on('error', function(err){
+    console.log(err);
+});
+
+// 写入流
+var data = '我是从数据库获取的数据，我要保存起来\n';
+
+// 创建一个可以写入的流，写入到文件output.txt中
+var writeStream = fs.createWriteStream('output.txt');
+
+// 写入一百次
+for (var i = 0;i < 100; i++){
+    writeStream.write(data, 'utf8');
+}
+
+// 标记写入完成
+writeStream.end();
+
+
+// 在被标记写入完成后，收到的广播事件（不调用end方法，也能写入，但是不会触发结束事件）
+writeStream.on('finish', function (){
+    console.log('写入完成');
+});
+
+// 失败
+writeStream.on('error', function(){
+    console.log('写入失败');
+});
+
+// 管道流
+var readerStream = fs.createReadStream('output.txt');
+var writeStream = fs.createWriteStream('output1.txt');
+
+// 管道读写操作
+// 读取output.txt文件内容，并将内容写入到output1.txt文件中
+
+readerStream.pipe(writeStream);
+
+console.log('程序执行完毕');
+
+
+
+
