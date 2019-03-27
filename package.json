@@ -1,0 +1,26 @@
+{
+  "name": "node-test",
+  "version": "1.0.0",
+  "description": "node学习笔记",
+  "main": "config.js",
+  "dependencies": {
+    "nav": "^1.0.0",
+    "silly-datetime": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/young7657/node-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/young7657/node-test/issues"
+  },
+  "homepage": "https://github.com/young7657/node-test#readme"
+}

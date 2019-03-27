@@ -8,6 +8,8 @@ var apple = require('apple');
 var bar = require('bar/bar');
 var nav = require('nav');
 
+var sd = require('silly-datetime');
+
 /**
  * req 获取url信息
  * res 浏览器返回响应信息
@@ -25,7 +27,8 @@ var app = http.createServer(function(req, res) {
         console.log('------------------');
     }
 
-    res.write('你好 nodejs');
+    var d = sd.format(new Date(), 'YYYY-MM-DD HH:mm');
+    res.write('你好 nodejs' + d);
     res.write('我是第一个node程序');
     res.write('supervisor');
 
